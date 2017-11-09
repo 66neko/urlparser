@@ -173,7 +173,12 @@ void EdUrlParser::parse() {
 	WALK_CHAR(pos, str, '#');
 	tag_pos = pos;
 	fragment = mRawUrl.substr(tag_pos, len - tag_pos);
-	__PARSE_END: return;
+	__PARSE_END: 
+	if (port.length() == 0)
+	{
+		port = "80";
+	}
+	return;
 }
 
 EdUrlParser* EdUrlParser::parseUrl(string urlstr) {
